@@ -96,11 +96,12 @@ class Twig
 	 *
 	 * @param string $name
 	 * @param mixed  $callback
-	 * @param array  $options
+	 * @param boolean  $is_safe
 	 */
-	public function addFunction($name, $callback, $options = [])
+	public function addFunction($name, $callback, $is_safe = FALSE)
 	{
-        $function = new \Twig\TwigFunction($name, $callback, $options);
+		$option = $is_safe ? ['is_safe' => ['html']] : [];
+        $function = new \Twig\TwigFunction($name, $callback, $option);
 		$this->_twig->addFunction($function);
 	}
 

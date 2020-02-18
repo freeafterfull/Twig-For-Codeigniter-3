@@ -44,9 +44,9 @@ class Twig
             $twig->addExtension(new \Twig\Extension\DebugExtension());
 		}
 		
+		$this->_twig = $twig;
+		
 		$this->_codeigniterHelpers();
-
-        $this->_twig = $twig;
         
         log_message('info', 'Twig Class Initialized');
     }
@@ -129,7 +129,7 @@ class Twig
 	private function _codeigniterHelpers() {
 		foreach($this->_configs['ci_helpers'] as $helper)
 		{
-			$this->twig->addFunction($helper[0], $helper[0], $helper[1]);
+			$this->addFunction($helper[0], $helper[0], $helper[1]);
 		}
 	}
 }

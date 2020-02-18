@@ -11,7 +11,7 @@ class MY_Loader extends CI_Loader {
         try {
             $output = $CI->twig->render($view, $vars);
         } catch (Exception $e) {
-            show_error(htmlspecialchars_decode($e->message()), 500, 'Twig Exception');
+            show_error(htmlspecialchars_decode($e->getMessage()), 500, 'Twig Exception');
         }
 
         if ($return === TRUE)

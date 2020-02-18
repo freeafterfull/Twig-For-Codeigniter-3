@@ -9,8 +9,10 @@ codeigniter/
 └── application/
     ├── config/
     │   └── twig.php
+    └── core/
+    │   └── MY_Loader.php
     └── libraries/
-        └── Twig.php
+        └── Twig.php   
 ```
 
 ## Requirements
@@ -46,7 +48,7 @@ $this->load->library('twig');
 ### Rendering Templates
 
 ```
-$this->twig->render('template', $data);
+$this->load->view('template', $data);
 ```
 
 ### Adding a Global Variable

@@ -57,22 +57,10 @@ class Twig
 	 */
     public function render($view, $vars = [])
     {
-		$CI =& get_instance();
-        $CI->output->set_output($this->renderString($view, $vars));   
-	}
-	
-    /**
-	 * Renders Twig Template as String
-	 *
-	 * @param string $view	View name
-	 * @param array	 $vars	An associative array of data to be extracted for use in the view
-	 */
-    public function renderString($view, $vars = [])
-    {
-        $file = $this->_templateFile($view);
+		$file = $this->_templateFile($view);
         
         return $this->_twig->render($file, $vars);
-    }
+	}
 
     /**
      * Add Global

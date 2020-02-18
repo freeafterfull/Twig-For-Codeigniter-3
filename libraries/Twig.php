@@ -42,7 +42,9 @@ class Twig
         if ($this->_configs['environments']['debug'])
         {
             $twig->addExtension(new \Twig\Extension\DebugExtension());
-        }
+		}
+		
+		$this->_codeigniterHelpers();
 
         $this->_twig = $twig;
         
@@ -105,8 +107,29 @@ class Twig
 		$this->_twig->addFunction($function);
 	}
 
+	/**
+	 * Template File
+     * 
+     * Defined the file extension
+	 *
+	 * @param string $view
+	 */
 	private function _templateFile($view) {
 		$ext = pathinfo($view, PATHINFO_EXTENSION);
         return ($ext === '') ? $view.'.twig' : $view;
+	}
+
+	/**
+	 * Add Helpers
+     * 
+     * Add CI helpers to Twig 
+	 *
+	 * @param string $view
+	 */
+	private function _codeigniterHelpers() {
+		foreach($this->_configs['ci_helpers'] as $helper)
+		{
+			$this->twig->addFunction($helper[0], $helper[0], $helper[1]);
+		}
 	}
 }

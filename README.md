@@ -32,6 +32,8 @@ Next, override the default configuration `application/config/twig.php`:
 ```
 $config['template_path'] = [VIEWPATH];
 
+$config['allow_extensions'] = ['html', 'php', 'twig'];
+
 $config['environments']['debug'] = FALSE;
 $config['environments']['cache'] = FALSE;
 $config['environments']['autoescape'] = 'html';

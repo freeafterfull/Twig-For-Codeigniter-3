@@ -115,8 +115,18 @@ class Twig
 	 * @param string $view
 	 */
 	private function _templateFile($view) {
-		$ext = pathinfo($view, PATHINFO_EXTENSION);
-        return ($ext === '') ? $view.'.twig' : $view;
+		$allow = $this->_configs['allow_extensions'];
+		
+		foreach ($allow as $ext) {
+			foreach (glob(VIEWPATH . "{$view}.{$ext}") as $file) {
+				$file = explode(DIRECTORY_SEPARATOR, $file);
+				$file = array_pop($file);
+				$ext = pathinfo($file, PATHINFO_EXTENSION);
+				$view = $view . '.' . $ext;
+			}
+		}
+
+		return $view;
 	}
 
 	/**
